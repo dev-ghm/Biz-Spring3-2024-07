@@ -48,7 +48,7 @@ section.memo article.list {
   justify-content: center;
 
   div.date-time {
-    display: flex;
+    display: inline-flex;
     gap: 5px;
     justify-content: space-around;
     align-items: center;
@@ -75,18 +75,19 @@ section.memo article.list {
       span {
         flex: 1;
       }
-      i.delete {
+      i.memo-delete {
         color: red;
         font-size: 3rem;
         font-weight: 900;
         opacity: 0;
         transition: opacity 0.7s;
       }
+      /* li tag 에 hover */
       &:hover {
         background-color: #f4f4f4;
         cursor: pointer;
       }
-      &:hover i.delete {
+      &:hover i.memo-delete {
         opacity: 1;
       }
     }

@@ -8,10 +8,14 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import com.callor.memo.controller.HomeController;
 import com.callor.memo.models.Memo;
 import com.callor.memo.service.MemoService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class MemoServiceImpl implements MemoService{
 	
 	protected final List<Memo> memoList;
@@ -115,13 +119,71 @@ public class MemoServiceImpl implements MemoService{
 
 	@Override
 	public int update(Memo memo) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		String m_seq = memo.getM_seq();
+		for(Memo m : memoList) {
+			if(m.getM_seq().equals(m_seq)) {
+				
+			/*
+			 * 자바 1.8(java8) 이상에서 사용하는 List<T> type 의 데이터
+			 * 요소를 교체하는 코드
+			 * 
+			 * 1. memoList 리스트 전체를 forEach 반복하기
+			 * 2. 각 요소(각개별 메모)를 변수 m 에 담아 내부 함수로 전달
+			 * 3. 만약 m 요소의 m_seq 값이 memo의 m_seq 값과 같으면 (?)
+			 * 4. memo 를 return
+			 * 5. 그렇지 않으면 그냥 자신(m) 을 return
+			 * 
+			 * 그리하여 전달받은 데이터의 memo 를 memoList 의 요소로 교체하기
+			 * 
+			 * java 의 화살표함수 ( () -> {  } 를 lambda(람다) 하무 라고 한다
+			 * javascript 화살표 함수 ( () => { } ) 와 비슷한 객체 type 의 함수
+			 * 
+			 * for() {  }
+			 */
+				
+				memoList.replaceAll(m-> m.getM_seq().equals(m_seq) ? memo : m);
+				log.debug(memoList.toString());
+				return 0;
+				
+				
+			}
+		}
+		
 	}
 
 	@Override
 	public int delete(String m_seq) {
-		// TODO Auto-generated method stub
+		
+		int index = 0;
+		
+		/*
+		 * forEach() 반복문을 순회하면서 m_seq 가 일치하는 memo 요소를
+		 * 찾는다 일치하는 요소를 찾으면 break 실행하여 forEach() 를 중단
+		 * 이때 index 는 찾은 요소의 index 가 된다
+		 * forEach() 다음에서 remove() 를 실행하여 요소를 삭제한다
+		 */
+		
+		for(Memo m : memoList) {			
+			if(m.getM_seq().equals(m_seq)) break;
+			index++;
+		}
+		memoList.remove(index);
+		
+		/*
+		 * memoList 를 forEach() 로 반복하면서
+		 * m_seq 를 검사하여 삭제 대상을 찾으면
+		 * remove() 실행하여 요소를 삭제한다
+		 * 
+		 * 이 코드는 표면상으로 정상적으로 작동하는 것처럼 보인다
+		 * 하지만, 내부에서 indexOutOfBound exception 이 발생할 수 있고
+		 * 메모리 누수등의 문제를 일으킬 수 있다
+		 * 가급적 이 코드는 
+		 */
+		for(Memo m : memoList) {	
+			if(m.getM_seq().equals(m_seq)) break;
+			index++;
+		}
 		return 0;
 	}
 

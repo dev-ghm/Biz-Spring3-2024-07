@@ -16,32 +16,17 @@
 </script>
 <script src="https://kit.fontawesome.com/58b5d9133d.js" 
 			crossorigin="anonymous"></script>
-<script src="${rootPath}/static/js/list.js"></script>
+<script src="${rootPath}/static/js/main.js"></script>
 </head>
 <body>
 	<h1>오늘은 내 인생의 가장 젊은날</h1>
 	<section class="memo main">
 		<article class='list'>
-			<div class="date-time">
-				<input type="date" placeholder="작성일" name="m_date"/> 
-				<input type="time" placeholder="작성시각" name="m_time" /> 
-				<input type="button" value="새로작성" />
-			</div>
-			<ul class="memo-list">
-				<c:forEach items="${MEMOS}" var="MEMO">
-					<li data-seq="${MEMO.m_seq}">
-						<i class="fa-solid fa-user"></i>
-						<i>&#128511;</i>
-						<span>${MEMO.m_subject}</span>
-						<i class="delete">&times;</i>
-					</li>
-				</c:forEach>
-			</ul>
 		</article>
 		<article class="sub"></article>
 	</section>
 	<footer>
-		<address>CopyRight &copy; callor@callor.com</address>
+		<address>CopyRight &copy; gudals2917@naver.com</address>
 	</footer>
 </body>
 </html>
