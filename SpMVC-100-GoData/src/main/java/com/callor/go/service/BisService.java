@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.callor.go.models.BisStation;
 
-public interface BIsService {
+public interface BisService {
 	
 	public List<BisStation> getStations();
 	
