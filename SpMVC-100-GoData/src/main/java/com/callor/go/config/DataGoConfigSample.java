@@ -6,6 +6,8 @@ public class DataGoConfigSample {
 	 * DataGoConfigSample 파일을 DataGoConfig 로 이름을 변경한 후
 	 * 프로젝트를 실행하시오
 	 */
-	public final static String GO_API_KEY = "YOUR APU KEY";
-	public final static String BIS_URL = "	http://api.gwangju.go.kr/json/stationInfo";
+	public final static String GO_API_KEY = "YOUR API KEY";
+	public final static String BIS_URL = "http://api.gwangju.go.kr/json/stationInfo";
+	public final static String ARRIVE_URL = "http://api.gwangju.go.kr/json/arriveInfo";
+
 }
